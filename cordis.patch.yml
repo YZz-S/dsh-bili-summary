@@ -1,0 +1,7 @@
+# bili-summary bundle patch：把本包作为插件行插入组合（host 半边）。
+# 该行以包名 `dsh-plugin-bili-summary` 解析到本包的 index.js，注册模型工具 bili_summary。
+# 如需自定义行配置（outputDir / cookie / maxFrames 等），在 profile 自己的
+# cordis.patch.yml 中按行 id（bili-summary）做 config 覆盖，不要改本文件。
+- insert:
+    - id: bili-summary
+      name: dsh-plugin-bili-summary

@@ -12,6 +12,20 @@
 - **跨平台**：纯 Node 实现（≥20.9），无 shell 调用、无编码坑；文件名清洗兼容 Windows 非法字符与保留名
 - **多P视频**：`page` 参数切换分P，每 P 独立 cid；越界给出总 P 数
 
+## 安装（dsh.bundle）
+
+本仓库同时是可安装的 dsh 插件包（`package.json` 声明 `dsh.bundle`，`cordis.patch.yml` 声明插入行）：
+
+```sh
+dsh plugin --profile web add github:YZz-S/bili-summary
+```
+
+安装后以 `dsh --profile web` 启动即自动挂载 `bili_summary` 工具；headless 用户把 profile 换成 `headless`。注意：
+
+- `dsh plugin` 内部转发给 pnpm（需先装 pnpm），首次会自动初始化 profile；
+- 若 pnpm 提示批准构建脚本，批准 **sharp** 可获得切帧能力；不批准也能安装，插件自动降级为"仅封面配图"；
+- 行级配置（outputDir / cookie 等）在 profile 自己的 `cordis.patch.yml` 中按行 id `bili-summary` 覆盖。
+
 ## 安装（agent preset 行）
 
 1. 准备一个自己的 DSH agent preset（用户 preset 位于 `${DSH_HOME}/.agent-presets/<id>/`，组合文件 `agent.cordis.yml`）。
