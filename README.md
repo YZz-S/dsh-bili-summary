@@ -17,7 +17,7 @@
 本仓库同时是可安装的 dsh 插件包（`package.json` 声明 `dsh.bundle`，`cordis.patch.yml` 声明插入行）：
 
 ```sh
-dsh plugin --profile web add github:YZz-S/bili-summary
+dsh plugin --profile web add github:YZz-S/dsh-bili-summary
 ```
 
 安装后以 `dsh --profile web` 启动即自动挂载 `bili_summary` 工具；headless 用户把 profile 换成 `headless`。注意：
