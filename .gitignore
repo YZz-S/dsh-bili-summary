@@ -1,0 +1,58 @@
+# ── 依赖与包管理 ─────────────────────────────────────────────
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnpm-store/
+
+# ── 运行时产物（插件默认输出目录） ────────────────────────────
+bili-output/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Python（技能形态的 bili-cli / Pillow / whisper 路径） ─────
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ── 密钥与本地配置（防 cookie / SESSDATA 误提交） ─────────────
+.env
+.env.*
+!.env.example
+*.local
+cookies*.txt
+
+# ── 临时文件 ─────────────────────────────────────────────────
+*.tmp
+*.bak
+*.swp
+*~
+.~*
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ── 操作系统 ─────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# ── 编辑器 / IDE ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── 测试与覆盖率 ─────────────────────────────────────────────
+coverage/
+.nyc_output/

@@ -1,0 +1,28 @@
+# 示例：把下面这行加进你自己的 agent preset 的 `agent.cordis.yml`
+
+# 背景知识（本仓库已验证的 DSH 行为）：
+# - 行内 `name` 为模块标识符：相对路径（./xxx.js）相对组合文件所在目录解析，
+#   绝对路径会转成 file:// URL，裸包名从 DSH 安装目录解析。
+# - 本行只向宿主的 `tools` 注册表注册工具、不发布任何服务，
+#   因此不需要 isolate realm，可直接放在 preset 顶层（与 dsh-tool-fs 同理）。
+# - sharp 是可选增强：插件文件目录树里 node_modules 有 sharp（npm install）
+#   时自动启用切帧，否则自动降级为"仅封面"，不会导致挂载失败。
+
+# 安装步骤：
+# 1. 把本仓库 plugin/bili-summary.js 复制到你的 preset 目录（或直接 npm install 本仓库后
+#    用绝对路径引用），例如：
+#     名称: ./bili-summary.js
+# 2. 在 preset 里加入下面这行
+# 3. 用 standingKeyFor(<preset-id>) 做挂载校验（见 plugin/README.md）
+
+- id: tool-bili-summary
+  name: ./bili-summary.js
+  config:
+    outputDir: bili-output          # 输出目录；相对会话工作目录，可用绝对路径
+    maxFrames: 12                   # 带图模式最多切帧数（1–48）
+    chapterIntervalSec: 180         # 章节划分粒度（秒）
+    timeoutMs: 15000                # 单次 HTTP 超时
+    retries: 2                      # 网络失败/风控重试次数
+    inlineSubtitleLimit: 10000      # 字幕内联返回字符上限，超出写文件并返回摘录
+    # cookie: "SESSDATA=...; bili_jct=..."   # 可选：风控(-412)/需登录(-352)时启用
+    # userAgent: "Mozilla/5.0 ..."           # 可选：覆盖默认浏览器 UA

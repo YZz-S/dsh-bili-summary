@@ -1,0 +1,2 @@
+# 统一换行符：仓库内一律 LF，避免跨平台 diff 噪音
+* text=auto eol=lf

@@ -1,0 +1,31 @@
+{
+  "name": "dsh-plugin-bili-summary",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness Host plugin: bili_summary tool — Bilibili video metadata, subtitle timeline and sharp-based frame cutting",
+  "type": "module",
+  "main": "bili-summary.js",
+  "exports": {
+    ".": "./bili-summary.js"
+  },
+  "files": [
+    "bili-summary.js",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/sanity.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "cordis",
+    "bilibili",
+    "tool",
+    "sharp"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  }
+}
