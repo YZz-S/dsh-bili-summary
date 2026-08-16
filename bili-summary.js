@@ -840,8 +840,10 @@ async function runTool(args, config, logger) {
 const plugin = {
   name: 'bili-summary',
   inject: ['tools'],
-  apply(ctx) {
-    const config = { ...DEFAULT_CONFIG, ...(ctx.config ?? {}) }
+  apply(ctx, lineConfig) {
+    // cordis 里插件行配置通过 apply 第二参传入；ctx.config 走 proxy trap，
+    // 未 inject 会抛 "cannot get property \"config\" without inject"
+    const config = { ...DEFAULT_CONFIG, ...(lineConfig ?? {}) }
     config.retries = clampInt(config.retries, 0, 5, DEFAULT_CONFIG.retries)
     config.timeoutMs = clampInt(config.timeoutMs, 3000, 120000, DEFAULT_CONFIG.timeoutMs)
 
